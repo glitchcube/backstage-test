@@ -38,7 +38,7 @@ spec:
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: VehicleService
+  name: vehicle-service
   description: Description of the service
   links:
     - url: https://gitlab.com/ruter-as/.../vehicleService
