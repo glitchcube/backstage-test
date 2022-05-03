@@ -1,7 +1,7 @@
 apiVersion: backstage.io/v1alpha1
 kind: API
 metadata:
-  name: entity.vehicle
+  name: entity-vehicle
 spec:
   type: kafka-topic
   lifecycle: production
@@ -13,7 +13,7 @@ spec:
 apiVersion: backstage.io/v1alpha1
 kind: API
 metadata:
-  name: command.vehicle.create
+  name: command-vehicle-create
 spec:
   type: kafka-topic
   lifecycle: production
@@ -52,8 +52,8 @@ spec:
   lifecycle: production #experimental/production/deprecated
   owner: my-team #reference Group(default) or User
   providesApis:
-    - default/entity.vehicle
+    - default/entity-vehicle
   consumesApis:
-    - default/command.vehicle.create
+    - default/command-vehicle-create
   dependsOn:
     - resource:default/vehicle-db
