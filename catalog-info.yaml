@@ -1,0 +1,59 @@
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: entity.vehicle
+spec:
+  type: kafka-topic
+  lifecycle: production
+  owner: my-team
+  definition: 'path.to.avro.schema'
+
+---
+
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: command.vehicle.create
+spec:
+  type: kafka-topic
+  lifecycle: production
+  owner: my-team
+  definition: 'path.to.avro.schema'
+
+
+---
+
+apiVersion: backstage.io/v1alpha1
+kind: Resource
+metadata:
+  name: vehicle-db
+spec:
+  type: database
+  lifecycle: production
+  owner: my-team
+  definition: 'path.to.avro.schema'
+
+---
+
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: VehicleService
+  description: Description of the service
+  links:
+    - url: https://gitlab.com/ruter-as/.../vehicleService
+      title: GitLab Repo
+      icon: gitLab
+  tags:
+    - kotlin
+    - java
+spec:
+  type: service #service/website/library
+  lifecycle: production #experimental/production/deprecated
+  owner: my-team #reference Group(default) or User
+  providesApis:
+    - default/entity.vehicle
+  consumesApis:
+    - default/command.vehicle.create
+  dependsOn:
+    - resource:default/vehicle-db
